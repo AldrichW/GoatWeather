@@ -20,6 +20,7 @@
 		10EE73F42686E3330049B327 /* WeatherServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F32686E3330049B327 /* WeatherServiceRouter.swift */; };
 		10EE73F62686E72F0049B327 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F52686E72F0049B327 /* APISecrets.swift */; };
 		10EE73F92686E8840049B327 /* DailyForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F82686E8840049B327 /* DailyForecastResponse.swift */; };
+		10EE73FD2686FC7C0049B327 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73FC2686FC7C0049B327 /* UserLocationService.swift */; };
 		139105C99B67EFD30BE96B7C /* Pods_GoatWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */; };
 		9EA5EA9804788712881F282C /* Pods_GoatWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		10EE73F32686E3330049B327 /* WeatherServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceRouter.swift; sourceTree = "<group>"; };
 		10EE73F52686E72F0049B327 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
 		10EE73F82686E8840049B327 /* DailyForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastResponse.swift; sourceTree = "<group>"; };
+		10EE73FC2686FC7C0049B327 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		26967D35966F12E84EC6BF24 /* Pods-GoatWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoatWeatherTests.release.xcconfig"; path = "Target Support Files/Pods-GoatWeatherTests/Pods-GoatWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 		10869C162686DAAA00157915 /* GoatWeather */ = {
 			isa = PBXGroup;
 			children = (
+				10EE73FB2686FC6B0049B327 /* Location */,
 				10EE73F72686E84C0049B327 /* Model */,
 				10EE73F02686E2A50049B327 /* Service */,
 				10869C172686DAAA00157915 /* AppDelegate.swift */,
@@ -169,6 +172,14 @@
 				10EE73F82686E8840049B327 /* DailyForecastResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		10EE73FB2686FC6B0049B327 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				10EE73FC2686FC7C0049B327 /* UserLocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		3EF6930C4F18830448381F59 /* Frameworks */ = {
@@ -388,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EE73FD2686FC7C0049B327 /* UserLocationService.swift in Sources */,
 				10EE73F22686E2C50049B327 /* WeatherService.swift in Sources */,
 				10EE73F62686E72F0049B327 /* APISecrets.swift in Sources */,
 				10869C1C2686DAAA00157915 /* DailyForecastFeedViewController.swift in Sources */,
