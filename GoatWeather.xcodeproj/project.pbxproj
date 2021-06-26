@@ -23,6 +23,8 @@
 		10EE73FD2686FC7C0049B327 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73FC2686FC7C0049B327 /* UserLocationService.swift */; };
 		10EE74012687103A0049B327 /* WeatherInfoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73FF2687103A0049B327 /* WeatherInfoItemCell.swift */; };
 		10EE74022687103A0049B327 /* WeatherInfoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10EE74002687103A0049B327 /* WeatherInfoItemCell.xib */; };
+		10EE7405268784020049B327 /* DailyForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE7404268784020049B327 /* DailyForecastViewModel.swift */; };
+		10EE7407268784AF0049B327 /* WeatherInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE7406268784AF0049B327 /* WeatherInfoViewModel.swift */; };
 		139105C99B67EFD30BE96B7C /* Pods_GoatWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */; };
 		9EA5EA9804788712881F282C /* Pods_GoatWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		10EE73FC2686FC7C0049B327 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		10EE73FF2687103A0049B327 /* WeatherInfoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoItemCell.swift; sourceTree = "<group>"; };
 		10EE74002687103A0049B327 /* WeatherInfoItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherInfoItemCell.xib; sourceTree = "<group>"; };
+		10EE7404268784020049B327 /* DailyForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastViewModel.swift; sourceTree = "<group>"; };
+		10EE7406268784AF0049B327 /* WeatherInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoViewModel.swift; sourceTree = "<group>"; };
 		26967D35966F12E84EC6BF24 /* Pods-GoatWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoatWeatherTests.release.xcconfig"; path = "Target Support Files/Pods-GoatWeatherTests/Pods-GoatWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,7 @@
 		10869C162686DAAA00157915 /* GoatWeather */ = {
 			isa = PBXGroup;
 			children = (
+				10EE7403268783ED0049B327 /* ViewModel */,
 				10EE73FE26870FDC0049B327 /* View */,
 				10EE73FB2686FC6B0049B327 /* Location */,
 				10EE73F72686E84C0049B327 /* Model */,
@@ -194,6 +199,15 @@
 				10EE74002687103A0049B327 /* WeatherInfoItemCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		10EE7403268783ED0049B327 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10EE7404268784020049B327 /* DailyForecastViewModel.swift */,
+				10EE7406268784AF0049B327 /* WeatherInfoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3EF6930C4F18830448381F59 /* Frameworks */ = {
@@ -415,7 +429,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				10EE73FD2686FC7C0049B327 /* UserLocationService.swift in Sources */,
+				10EE7407268784AF0049B327 /* WeatherInfoViewModel.swift in Sources */,
 				10EE73F22686E2C50049B327 /* WeatherService.swift in Sources */,
+				10EE7405268784020049B327 /* DailyForecastViewModel.swift in Sources */,
 				10EE73F62686E72F0049B327 /* APISecrets.swift in Sources */,
 				10EE74012687103A0049B327 /* WeatherInfoItemCell.swift in Sources */,
 				10869C1C2686DAAA00157915 /* DailyForecastFeedViewController.swift in Sources */,
