@@ -24,6 +24,8 @@ class DailyForecastFeedViewController: UIViewController {
                                    action: #selector(grantLocationTapped))
         return item
     }()
+    
+    private let userLocationService = UserLocationService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,16 @@ class DailyForecastFeedViewController: UIViewController {
     /// MARK :- action handlers
     @objc
     private func grantLocationTapped() {
-        // TODO: @aldrich add location tapped handling
+        // Create a custom alert so we don't use up the one-time location request at the OS level
+        let alertController = UIAlertController(title: "Grant Location Permission", message: "We use your location to provide the daily weather forecast for your area", preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "No thanks", style: .cancel, handler: nil)
+        let approve = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.userLocationService.requestLocationPermissions()
+        }
+        alertController.addAction(cancel)
+        alertController.addAction(approve)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
