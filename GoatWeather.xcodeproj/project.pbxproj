@@ -1,0 +1,601 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10869C182686DAAA00157915 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C172686DAAA00157915 /* AppDelegate.swift */; };
+		10869C1A2686DAAA00157915 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C192686DAAA00157915 /* SceneDelegate.swift */; };
+		10869C1C2686DAAA00157915 /* DailyForecastFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C1B2686DAAA00157915 /* DailyForecastFeedViewController.swift */; };
+		10869C222686DAAA00157915 /* GoatWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10869C202686DAAA00157915 /* GoatWeather.xcdatamodeld */; };
+		10869C242686DAAB00157915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10869C232686DAAB00157915 /* Assets.xcassets */; };
+		10869C272686DAAB00157915 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10869C252686DAAB00157915 /* LaunchScreen.storyboard */; };
+		10869C322686DAAC00157915 /* GoatWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C312686DAAC00157915 /* GoatWeatherTests.swift */; };
+		10869C3D2686DAAC00157915 /* GoatWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C3C2686DAAC00157915 /* GoatWeatherUITests.swift */; };
+		10869C4B2686DB6D00157915 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10869C4A2686DB6D00157915 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10869C2E2686DAAC00157915 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10869C0C2686DAAA00157915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10869C132686DAAA00157915;
+			remoteInfo = GoatWeather;
+		};
+		10869C392686DAAC00157915 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10869C0C2686DAAA00157915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10869C132686DAAA00157915;
+			remoteInfo = GoatWeather;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		10869C142686DAAA00157915 /* GoatWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoatWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10869C172686DAAA00157915 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10869C192686DAAA00157915 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		10869C1B2686DAAA00157915 /* DailyForecastFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastFeedViewController.swift; sourceTree = "<group>"; };
+		10869C212686DAAA00157915 /* GoatWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoatWeather.xcdatamodel; sourceTree = "<group>"; };
+		10869C232686DAAB00157915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10869C262686DAAB00157915 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10869C282686DAAB00157915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10869C2D2686DAAC00157915 /* GoatWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoatWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10869C312686DAAC00157915 /* GoatWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatWeatherTests.swift; sourceTree = "<group>"; };
+		10869C332686DAAC00157915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10869C382686DAAC00157915 /* GoatWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoatWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10869C3C2686DAAC00157915 /* GoatWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatWeatherUITests.swift; sourceTree = "<group>"; };
+		10869C3E2686DAAC00157915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10869C4A2686DB6D00157915 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10869C112686DAAA00157915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C2A2686DAAC00157915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C352686DAAC00157915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10869C0B2686DAAA00157915 = {
+			isa = PBXGroup;
+			children = (
+				10869C4A2686DB6D00157915 /* README.md */,
+				10869C162686DAAA00157915 /* GoatWeather */,
+				10869C302686DAAC00157915 /* GoatWeatherTests */,
+				10869C3B2686DAAC00157915 /* GoatWeatherUITests */,
+				10869C152686DAAA00157915 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10869C152686DAAA00157915 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10869C142686DAAA00157915 /* GoatWeather.app */,
+				10869C2D2686DAAC00157915 /* GoatWeatherTests.xctest */,
+				10869C382686DAAC00157915 /* GoatWeatherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10869C162686DAAA00157915 /* GoatWeather */ = {
+			isa = PBXGroup;
+			children = (
+				10869C172686DAAA00157915 /* AppDelegate.swift */,
+				10869C192686DAAA00157915 /* SceneDelegate.swift */,
+				10869C1B2686DAAA00157915 /* DailyForecastFeedViewController.swift */,
+				10869C232686DAAB00157915 /* Assets.xcassets */,
+				10869C252686DAAB00157915 /* LaunchScreen.storyboard */,
+				10869C282686DAAB00157915 /* Info.plist */,
+				10869C202686DAAA00157915 /* GoatWeather.xcdatamodeld */,
+			);
+			path = GoatWeather;
+			sourceTree = "<group>";
+		};
+		10869C302686DAAC00157915 /* GoatWeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				10869C312686DAAC00157915 /* GoatWeatherTests.swift */,
+				10869C332686DAAC00157915 /* Info.plist */,
+			);
+			path = GoatWeatherTests;
+			sourceTree = "<group>";
+		};
+		10869C3B2686DAAC00157915 /* GoatWeatherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				10869C3C2686DAAC00157915 /* GoatWeatherUITests.swift */,
+				10869C3E2686DAAC00157915 /* Info.plist */,
+			);
+			path = GoatWeatherUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10869C132686DAAA00157915 /* GoatWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10869C412686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeather" */;
+			buildPhases = (
+				10869C102686DAAA00157915 /* Sources */,
+				10869C112686DAAA00157915 /* Frameworks */,
+				10869C122686DAAA00157915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoatWeather;
+			productName = GoatWeather;
+			productReference = 10869C142686DAAA00157915 /* GoatWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10869C2C2686DAAC00157915 /* GoatWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10869C442686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeatherTests" */;
+			buildPhases = (
+				10869C292686DAAC00157915 /* Sources */,
+				10869C2A2686DAAC00157915 /* Frameworks */,
+				10869C2B2686DAAC00157915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10869C2F2686DAAC00157915 /* PBXTargetDependency */,
+			);
+			name = GoatWeatherTests;
+			productName = GoatWeatherTests;
+			productReference = 10869C2D2686DAAC00157915 /* GoatWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		10869C372686DAAC00157915 /* GoatWeatherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10869C472686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeatherUITests" */;
+			buildPhases = (
+				10869C342686DAAC00157915 /* Sources */,
+				10869C352686DAAC00157915 /* Frameworks */,
+				10869C362686DAAC00157915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10869C3A2686DAAC00157915 /* PBXTargetDependency */,
+			);
+			name = GoatWeatherUITests;
+			productName = GoatWeatherUITests;
+			productReference = 10869C382686DAAC00157915 /* GoatWeatherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10869C0C2686DAAA00157915 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					10869C132686DAAA00157915 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					10869C2C2686DAAC00157915 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 10869C132686DAAA00157915;
+					};
+					10869C372686DAAC00157915 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 10869C132686DAAA00157915;
+					};
+				};
+			};
+			buildConfigurationList = 10869C0F2686DAAA00157915 /* Build configuration list for PBXProject "GoatWeather" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10869C0B2686DAAA00157915;
+			productRefGroup = 10869C152686DAAA00157915 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10869C132686DAAA00157915 /* GoatWeather */,
+				10869C2C2686DAAC00157915 /* GoatWeatherTests */,
+				10869C372686DAAC00157915 /* GoatWeatherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10869C122686DAAA00157915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10869C272686DAAB00157915 /* LaunchScreen.storyboard in Resources */,
+				10869C242686DAAB00157915 /* Assets.xcassets in Resources */,
+				10869C4B2686DB6D00157915 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C2B2686DAAC00157915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C362686DAAC00157915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10869C102686DAAA00157915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10869C1C2686DAAA00157915 /* DailyForecastFeedViewController.swift in Sources */,
+				10869C182686DAAA00157915 /* AppDelegate.swift in Sources */,
+				10869C1A2686DAAA00157915 /* SceneDelegate.swift in Sources */,
+				10869C222686DAAA00157915 /* GoatWeather.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C292686DAAC00157915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10869C322686DAAC00157915 /* GoatWeatherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10869C342686DAAC00157915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10869C3D2686DAAC00157915 /* GoatWeatherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10869C2F2686DAAC00157915 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10869C132686DAAA00157915 /* GoatWeather */;
+			targetProxy = 10869C2E2686DAAC00157915 /* PBXContainerItemProxy */;
+		};
+		10869C3A2686DAAC00157915 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10869C132686DAAA00157915 /* GoatWeather */;
+			targetProxy = 10869C392686DAAC00157915 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		10869C252686DAAB00157915 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10869C262686DAAB00157915 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10869C3F2686DAAC00157915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10869C402686DAAC00157915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10869C422686DAAC00157915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10869C432686DAAC00157915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		10869C452686DAAC00157915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoatWeather.app/GoatWeather";
+			};
+			name = Debug;
+		};
+		10869C462686DAAC00157915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoatWeather.app/GoatWeather";
+			};
+			name = Release;
+		};
+		10869C482686DAAC00157915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeatherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoatWeather;
+			};
+			name = Debug;
+		};
+		10869C492686DAAC00157915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoatWeatherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.atelieraldo.GoatWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoatWeather;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10869C0F2686DAAA00157915 /* Build configuration list for PBXProject "GoatWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10869C3F2686DAAC00157915 /* Debug */,
+				10869C402686DAAC00157915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10869C412686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10869C422686DAAC00157915 /* Debug */,
+				10869C432686DAAC00157915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10869C442686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10869C452686DAAC00157915 /* Debug */,
+				10869C462686DAAC00157915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10869C472686DAAC00157915 /* Build configuration list for PBXNativeTarget "GoatWeatherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10869C482686DAAC00157915 /* Debug */,
+				10869C492686DAAC00157915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		10869C202686DAAA00157915 /* GoatWeather.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				10869C212686DAAA00157915 /* GoatWeather.xcdatamodel */,
+			);
+			currentVersion = 10869C212686DAAA00157915 /* GoatWeather.xcdatamodel */;
+			path = GoatWeather.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 10869C0C2686DAAA00157915 /* Project object */;
+}
