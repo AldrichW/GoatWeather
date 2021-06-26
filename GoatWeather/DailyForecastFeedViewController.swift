@@ -5,6 +5,7 @@
 //  Created by Aldrich Wingsiong on 6/25/21.
 //
 
+import CoreLocation
 import UIKit
 import SnapKit
 
@@ -66,5 +67,19 @@ class DailyForecastFeedViewController: UIViewController {
         alertController.addAction(approve)
         
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension DailyForecastFeedViewController: UserLocationServiceListener {
+    func didChangeLocationPermissions(to permission: CLAuthorizationStatus) {
+        switch permission {
+        case .authorizedAlways, .authorizedWhenInUse:
+            // TODO: @aldrich make a call to fetch daily forecast
+            break
+        case .denied, .restricted, .notDetermined:
+            break
+        @unknown default:
+            assert(true, "Unknown location authorization status")
+        }
     }
 }
