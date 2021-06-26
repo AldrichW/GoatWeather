@@ -14,6 +14,8 @@ class DailyForecastFeedViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(WeatherInfoItemCell.nib, forCellReuseIdentifier: WeatherInfoItemCell.identifier)
+        view.dataSource = self
         
         return view
     }()
@@ -67,6 +69,23 @@ class DailyForecastFeedViewController: UIViewController {
         alertController.addAction(approve)
         
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension DailyForecastFeedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        7 // TODO: @aldrich populate with view model update
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherInfoItemCell.identifier) ?? WeatherInfoItemCell()
+        // TODO: @aldrich populate with view model update
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // TODO: @aldrich populate with location service city name
+        "Toronto, ON"
     }
 }
 
