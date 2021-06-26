@@ -18,7 +18,7 @@ struct DailyForecastResponse: Codable {
 struct DailyForecastModel: Codable {
     let dt: Int?
     let temp: TemperatureModel?
-    let weather: WeatherModel?
+    let weather: [WeatherModel]?
 }
 
 struct TemperatureModel: Codable {

@@ -5,13 +5,15 @@
 //  Created by Aldrich Wingsiong on 6/25/21.
 //
 
-import UIKit
+import CoreLocation
+import Foundation
 
 typealias DailyForecastResult = Result<DailyForecastResponse?, DailyForecastError>
 typealias DailyForecastCompletion = (DailyForecastResult) -> ()
 
 protocol WeatherServicing: AnyObject {
-    func getDailyForecast(_ completion: @escaping DailyForecastCompletion)
+    func getDailyForecast(with coordinates: CLLocationCoordinate2D,
+                          completion: @escaping DailyForecastCompletion)
     // ---- ADD NEW ENDPOINT CALLS BELOW ----
 }
 
@@ -26,8 +28,9 @@ class WeatherService: NSObject, WeatherServicing {
     }
     
     // MARK :- CashStockServicing
-    func getDailyForecast(_ completion: @escaping DailyForecastCompletion) {
-        request(.getDailyForecast, completion: completion)
+    func getDailyForecast(with coordinates: CLLocationCoordinate2D,
+                          completion: @escaping DailyForecastCompletion) {
+        request(.getDailyForecast(coordinates), completion: completion)
     }
     
     // MARK :- Private
