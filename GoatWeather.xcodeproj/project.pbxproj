@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,10 @@
 		10869C322686DAAC00157915 /* GoatWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C312686DAAC00157915 /* GoatWeatherTests.swift */; };
 		10869C3D2686DAAC00157915 /* GoatWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10869C3C2686DAAC00157915 /* GoatWeatherUITests.swift */; };
 		10869C4B2686DB6D00157915 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10869C4A2686DB6D00157915 /* README.md */; };
+		10EE73F22686E2C50049B327 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F12686E2C50049B327 /* WeatherService.swift */; };
+		10EE73F42686E3330049B327 /* WeatherServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F32686E3330049B327 /* WeatherServiceRouter.swift */; };
+		10EE73F62686E72F0049B327 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F52686E72F0049B327 /* APISecrets.swift */; };
+		10EE73F92686E8840049B327 /* DailyForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE73F82686E8840049B327 /* DailyForecastResponse.swift */; };
 		139105C99B67EFD30BE96B7C /* Pods_GoatWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */; };
 		9EA5EA9804788712881F282C /* Pods_GoatWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +58,10 @@
 		10869C3C2686DAAC00157915 /* GoatWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatWeatherUITests.swift; sourceTree = "<group>"; };
 		10869C3E2686DAAC00157915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10869C4A2686DB6D00157915 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		10EE73F12686E2C50049B327 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		10EE73F32686E3330049B327 /* WeatherServiceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceRouter.swift; sourceTree = "<group>"; };
+		10EE73F52686E72F0049B327 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
+		10EE73F82686E8840049B327 /* DailyForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastResponse.swift; sourceTree = "<group>"; };
 		26967D35966F12E84EC6BF24 /* Pods-GoatWeatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoatWeatherTests.release.xcconfig"; path = "Target Support Files/Pods-GoatWeatherTests/Pods-GoatWeatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7BAE70CBDBF31E26D4D64B /* Pods_GoatWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C7B615CBF6DEF67B3BAAA1C /* Pods_GoatWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoatWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +122,8 @@
 		10869C162686DAAA00157915 /* GoatWeather */ = {
 			isa = PBXGroup;
 			children = (
+				10EE73F72686E84C0049B327 /* Model */,
+				10EE73F02686E2A50049B327 /* Service */,
 				10869C172686DAAA00157915 /* AppDelegate.swift */,
 				10869C192686DAAA00157915 /* SceneDelegate.swift */,
 				10869C1B2686DAAA00157915 /* DailyForecastFeedViewController.swift */,
@@ -121,6 +131,7 @@
 				10869C252686DAAB00157915 /* LaunchScreen.storyboard */,
 				10869C282686DAAB00157915 /* Info.plist */,
 				10869C202686DAAA00157915 /* GoatWeather.xcdatamodeld */,
+				10EE73F52686E72F0049B327 /* APISecrets.swift */,
 			);
 			path = GoatWeather;
 			sourceTree = "<group>";
@@ -143,6 +154,23 @@
 			path = GoatWeatherUITests;
 			sourceTree = "<group>";
 		};
+		10EE73F02686E2A50049B327 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				10EE73F12686E2C50049B327 /* WeatherService.swift */,
+				10EE73F32686E3330049B327 /* WeatherServiceRouter.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		10EE73F72686E84C0049B327 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10EE73F82686E8840049B327 /* DailyForecastResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3EF6930C4F18830448381F59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +188,6 @@
 				7654BD24113907CF6F783778 /* Pods-GoatWeatherTests.debug.xcconfig */,
 				26967D35966F12E84EC6BF24 /* Pods-GoatWeatherTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -361,10 +388,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EE73F22686E2C50049B327 /* WeatherService.swift in Sources */,
+				10EE73F62686E72F0049B327 /* APISecrets.swift in Sources */,
 				10869C1C2686DAAA00157915 /* DailyForecastFeedViewController.swift in Sources */,
 				10869C182686DAAA00157915 /* AppDelegate.swift in Sources */,
 				10869C1A2686DAAA00157915 /* SceneDelegate.swift in Sources */,
 				10869C222686DAAA00157915 /* GoatWeather.xcdatamodeld in Sources */,
+				10EE73F42686E3330049B327 /* WeatherServiceRouter.swift in Sources */,
+				10EE73F92686E8840049B327 /* DailyForecastResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
