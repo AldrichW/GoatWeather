@@ -8,13 +8,26 @@
 import CoreLocation
 import UIKit
 
+enum DailyForecastFeedState {
+    case empty
+    case error(DailyForecastError)
+    case feed
+}
+
+protocol DailyForecastPresenting:AnyObject {
+    func feedShouldUpdate(with state: DailyForecastFeedState)
+}
+
 protocol DailyForecastViewModelling: AnyObject {
+    var presenter: DailyForecastPresenting? { get set }
     var weatherInfo: [WeatherInfoViewModelling]? { get }
     
     func getDailyForecast(with coordinates: CLLocationCoordinate2D)
 }
 
 class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
+    
+    weak var presenter: DailyForecastPresenting?
     
     var weatherInfo: [WeatherInfoViewModelling]?
     
@@ -32,12 +45,14 @@ class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
             switch result {
             case .success(let response):
                 guard let response = response else {
+                    self.presenter?.feedShouldUpdate(with: .empty)
                     return
                 }
                 self.configure(response)
+                self.presenter?.feedShouldUpdate(with: .feed)
             break
-            case .failure(_):
-                //TODO @aldrich handle error
+            case .failure(let error):
+                self.presenter?.feedShouldUpdate(with: .error(error))
             break
             }
         }
