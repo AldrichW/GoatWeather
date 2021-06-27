@@ -113,7 +113,7 @@ class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
     func getImage(completion: @escaping (UIImage?)->()) {
         
         if let image = image {
-            completion(image)
+            DispatchQueue.main.async { completion(image) }
             return
         }
         
