@@ -31,8 +31,10 @@ class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
         service.getDailyForecast(with: coordinates) { result in
             switch result {
             case .success(let response):
-                //TODO @aldrich handle successful response
-                print(response)
+                guard let response = response else {
+                    return
+                }
+                self.configure(response)
             break
             case .failure(_):
                 //TODO @aldrich handle error
@@ -41,4 +43,7 @@ class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
         }
     }
     
+    private func configure(_ response: DailyForecastResponse) {
+        weatherInfo = response.daily?.enumerated().map { WeatherInfoViewModel($1, index: $0) }
+    }
 }
