@@ -20,7 +20,7 @@ The user can see/do the following:
 
 Please see the corresponsing screenshots and demos in the `/demo_screenshots` folder from the root directory
 
-## If I had more time
+### If I had more time
 
 If I could allocate more time to this project, I would work on the following tasks:
 * Unit testing across view controller, view model, and service layer
@@ -53,7 +53,7 @@ The following third party libraries and frameworks were used to help develop GOA
 
 ## Architecture
 
-** Please see `GoatWeatherArchitectureDiagram.jpeg` in the root directory for the full architecture diagram **
+**Please see `GoatWeatherArchitectureDiagram.jpeg` in the root directory for the full architecture diagram**
 
 When designing the architecture for this app, I focused on the following guiding principles:
 
