@@ -40,8 +40,6 @@ class DailyForecastFeedViewController: UIViewController {
         configureNavigation()
         configureSubviews()
         configureConstraints()
-        
-        
     }
 
     /// MARK :- Private UI methods
@@ -93,6 +91,11 @@ extension DailyForecastFeedViewController: UITableViewDataSource {
             cell.currentTempLabel.text = viewModel.currentTemp
             cell.highTempLabel.text = viewModel.highTemp
             cell.lowTempLabel.text = viewModel.lowTemp
+            
+            viewModel.getImage { image in
+                cell.weatherImageView.image = image
+                cell.layoutIfNeeded()
+            }
         }
         
         return cell

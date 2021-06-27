@@ -20,11 +20,12 @@ protocol WeatherInfoViewModelling: AnyObject {
     var highTemp: String? { get }
     var lowTemp: String? { get }
     
-    // image
-    var imageURL: String? { get }
-    
     // detail pagge
     var weatherDescription: String? { get }
+    
+    // image
+    var imageURL: String? { get }
+    func getImage(completion: @escaping (UIImage?)->())
 }
 
 class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
@@ -40,6 +41,8 @@ class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
     var imageURL: String?
     
     var weatherDescription: String?
+    
+    private var image: UIImage?
     
     init(index: Int,
          dayOfWeek: String?,
@@ -58,6 +61,8 @@ class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
         self.imageURL = imageURL
         self.weatherDescription = weatherDescription
         super.init()
+        
+        
     }
     
     convenience init(_ model: DailyForecastModel, index: Int) {
@@ -102,7 +107,32 @@ class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
         guard let icon = icon else {
             return ""
         }
-        return "http://openweathermap.org/img/wn/\(icon)@2x.png"
+        return "https://openweathermap.org/img/wn/\(icon)@2x.png"
+    }
+    
+    func getImage(completion: @escaping (UIImage?)->()) {
+        
+        if let image = image {
+            completion(image)
+            return
+        }
+        
+        guard let imageURL = imageURL,
+              let url = URL(string: imageURL) else {
+            debugPrint("Invalid image url: \(String(describing:imageURL))")
+            return
+        }
+        
+        DispatchQueue.global().async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let image = UIImage(data:imageData) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                        completion(image)
+                    }
+                }
+            }
+        }
     }
     
     // MARK :- private date/time configuration methods
