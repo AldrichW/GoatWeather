@@ -91,6 +91,7 @@ class DailyForecastFeedViewController: UIViewController {
     private func grantLocationTapped() {
         let currentPermission = userLocationService.getCurrentLocationPermissions()
         if case .notDetermined = currentPermission {
+            // Create and present a custom location alert since we only get one chance to show the OS level location permissions prompt
             let alertController = UIAlertController(title: "Grant Location Permission", message: "We use your location to provide the daily weather forecast for your area", preferredStyle: .alert)
             
             let cancel = UIAlertAction(title: "No thanks", style: .cancel, handler: nil)
@@ -153,18 +154,7 @@ extension DailyForecastFeedViewController: UITableViewDelegate {
 }
 
 extension DailyForecastFeedViewController: UserLocationServiceListener {
-    func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?) {
-        switch permission {
-        case .authorizedAlways, .authorizedWhenInUse:
-            fetchDailyForecast(currentLocation)
-        case .denied, .restricted, .notDetermined:
-            break
-        @unknown default:
-            assert(true, "Unknown location authorization status")
-        }
-    }
-    
-    func didUpdateLocation(_ location: CLLocation?) {
+    func didUpdateLocation(_ location: CLLocation) {
         fetchDailyForecast(location)
     }
 }
@@ -178,7 +168,7 @@ extension DailyForecastFeedViewController: DailyForecastPresenting {
                 // TODO: @aldrich implement an empty state view that prompts user to grant location
                 break
             case .error(_):
-                // TODO: @aldrich implement error views
+                // TODO: @aldrich implement error view with try again button
                 break
             case .feed:
                 self.tableView.reloadData()

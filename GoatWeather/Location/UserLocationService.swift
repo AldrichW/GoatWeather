@@ -9,8 +9,7 @@ import CoreLocation
 import UIKit
 
 protocol UserLocationServiceListener: AnyObject {
-    func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?)
-    func didUpdateLocation(_ location: CLLocation?)
+    func didUpdateLocation(_ location: CLLocation)
 }
 
 protocol UserLocationServicing: AnyObject {
@@ -31,7 +30,6 @@ class UserLocationService: NSObject, UserLocationServicing {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
     }
 
     func getCurrentLocationPermissions() -> CLAuthorizationStatus {
@@ -63,11 +61,30 @@ class UserLocationService: NSObject, UserLocationServicing {
 }
 
 extension UserLocationService: CLLocationManagerDelegate {
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        listener?.didChangeLocationPermissions(to: manager.authorizationStatus, currentLocation: manager.location)
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            DispatchQueue.main.async {
+                manager.startUpdatingLocation()
+            }
+        case .denied, .restricted, .notDetermined:
+            DispatchQueue.main.async {
+                manager.stopUpdatingLocation()
+            }
+            break
+        @unknown default:
+            assert(true, "Unknown location authorization status")
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        listener?.didUpdateLocation(locations.first)
+        if let location = locations.first {
+            listener?.didUpdateLocation(location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // TODO: @aldrich handle location failure
     }
 }
