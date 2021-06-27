@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserLocationServiceListener: AnyObject {
     func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?)
+    func didUpdateLocation(_ location: CLLocation?)
 }
 
 protocol UserLocationServicing: AnyObject {
@@ -63,14 +64,10 @@ class UserLocationService: NSObject, UserLocationServicing {
 
 extension UserLocationService: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-        case .denied, .notDetermined, .restricted:
-            locationManager.stopUpdatingLocation()
-        @unknown default:
-            assert(true, "Unknown location authorization status")
-        }
         listener?.didChangeLocationPermissions(to: manager.authorizationStatus, currentLocation: manager.location)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        listener?.didUpdateLocation(locations.first)
     }
 }

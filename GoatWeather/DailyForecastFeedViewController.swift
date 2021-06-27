@@ -16,6 +16,7 @@ class DailyForecastFeedViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(WeatherInfoItemCell.nib, forCellReuseIdentifier: WeatherInfoItemCell.identifier)
         view.dataSource = self
+        view.delegate = self
         view.refreshControl = UIRefreshControl()
         
         return view
@@ -35,12 +36,12 @@ class DailyForecastFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userLocationService.listener = self
-        viewModel.presenter = self
-        
         configureNavigation()
         configureSubviews()
         configureConstraints()
+        
+        viewModel.presenter = self
+        userLocationService.listener = self
         
         fetchDailyForecastIfApplicable()
     }
@@ -69,7 +70,7 @@ class DailyForecastFeedViewController: UIViewController {
         
         switch permissions {
         case .authorizedAlways, .authorizedWhenInUse:
-            fetchDailyForecast()
+            fetchDailyForecast(userLocationService.getCurrentLocation())
         case .denied, .notDetermined, .restricted:
             break
         @unknown default:
@@ -77,8 +78,8 @@ class DailyForecastFeedViewController: UIViewController {
         }
     }
     
-    private func fetchDailyForecast() {
-        guard let coordinates = userLocationService.getCurrentLocation()?.coordinate else { return }
+    private func fetchDailyForecast(_ location: CLLocation?) {
+        guard let coordinates = location?.coordinate else { return }
         userLocationService.fetchCurrentCity { cityStateString in
             self.viewModel.cityAndStateTitle = cityStateString
         }
@@ -88,17 +89,19 @@ class DailyForecastFeedViewController: UIViewController {
     /// MARK :- action handlers
     @objc
     private func grantLocationTapped() {
-        // Create a custom alert so we don't use up the one-time location request at the OS level
-        let alertController = UIAlertController(title: "Grant Location Permission", message: "We use your location to provide the daily weather forecast for your area", preferredStyle: .alert)
-        
-        let cancel = UIAlertAction(title: "No thanks", style: .cancel, handler: nil)
-        let approve = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.userLocationService.requestLocationPermissions()
+        let currentPermission = userLocationService.getCurrentLocationPermissions()
+        if case .notDetermined = currentPermission {
+            let alertController = UIAlertController(title: "Grant Location Permission", message: "We use your location to provide the daily weather forecast for your area", preferredStyle: .alert)
+            
+            let cancel = UIAlertAction(title: "No thanks", style: .cancel, handler: nil)
+            let approve = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.userLocationService.requestLocationPermissions()
+            }
+            alertController.addAction(cancel)
+            alertController.addAction(approve)
+            
+            present(alertController, animated: true, completion: nil)
         }
-        alertController.addAction(cancel)
-        alertController.addAction(approve)
-        
-        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -132,16 +135,37 @@ extension DailyForecastFeedViewController: UITableViewDataSource {
     }
 }
 
+extension DailyForecastFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // TODO: @aldrich replace alert controller with a full view controller when we want to show more weather details on top of description
+        if let weatherInfo = viewModel.weatherInfo {
+            let weather = weatherInfo[indexPath.row]
+            let title = (weather.dayOfWeek ?? "") + " " + (weather.date ?? "")
+            let alertController = UIAlertController(title: title, message: weather.weatherDescription, preferredStyle: .actionSheet)
+            
+            let gotIt = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            alertController.addAction(gotIt)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
 extension DailyForecastFeedViewController: UserLocationServiceListener {
     func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?) {
         switch permission {
         case .authorizedAlways, .authorizedWhenInUse:
-            fetchDailyForecast()
+            fetchDailyForecast(currentLocation)
         case .denied, .restricted, .notDetermined:
             break
         @unknown default:
             assert(true, "Unknown location authorization status")
         }
+    }
+    
+    func didUpdateLocation(_ location: CLLocation?) {
+        fetchDailyForecast(location)
     }
 }
 
@@ -151,8 +175,10 @@ extension DailyForecastFeedViewController: DailyForecastPresenting {
             self.tableView.refreshControl?.endRefreshing()
             switch state {
             case .empty:
+                // TODO: @aldrich implement an empty state view that prompts user to grant location
                 break
             case .error(_):
+                // TODO: @aldrich implement error views
                 break
             case .feed:
                 self.tableView.reloadData()

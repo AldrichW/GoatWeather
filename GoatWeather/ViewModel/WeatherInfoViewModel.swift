@@ -113,12 +113,12 @@ class WeatherInfoViewModel: NSObject, WeatherInfoViewModelling {
     func getImage(completion: @escaping (UIImage?)->()) {
         
         if let image = image {
-            DispatchQueue.main.async { completion(image) }
+            completion(image)
             return
         }
         
         guard let imageURL = imageURL,
-              let url = URL(string: imageURL) else {
+            let url = URL(string: imageURL) else {
             debugPrint("Invalid image url: \(String(describing:imageURL))")
             return
         }
