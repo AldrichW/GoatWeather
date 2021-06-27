@@ -16,6 +16,7 @@ class DailyForecastFeedViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(WeatherInfoItemCell.nib, forCellReuseIdentifier: WeatherInfoItemCell.identifier)
         view.dataSource = self
+        view.refreshControl = UIRefreshControl()
         
         return view
     }()
@@ -52,6 +53,7 @@ class DailyForecastFeedViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchDailyForecastIfApplicable), for: .valueChanged)
         view.addSubview(tableView)
     }
     
@@ -61,6 +63,7 @@ class DailyForecastFeedViewController: UIViewController {
         }
     }
     
+    @objc
     private func fetchDailyForecastIfApplicable() {
         let permissions = userLocationService.getCurrentLocationPermissions()
         
@@ -144,13 +147,14 @@ extension DailyForecastFeedViewController: UserLocationServiceListener {
 
 extension DailyForecastFeedViewController: DailyForecastPresenting {
     func feedShouldUpdate(with state: DailyForecastFeedState) {
-        switch state {
-        case .empty:
-            break
-        case .error(_):
-            break
-        case .feed:
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+            switch state {
+            case .empty:
+                break
+            case .error(_):
+                break
+            case .feed:
                 self.tableView.reloadData()
             }
         }
