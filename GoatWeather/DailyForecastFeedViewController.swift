@@ -40,6 +40,8 @@ class DailyForecastFeedViewController: UIViewController {
         configureNavigation()
         configureSubviews()
         configureConstraints()
+        
+        fetchDailyForecastIfApplicable()
     }
 
     /// MARK :- Private UI methods
@@ -57,6 +59,27 @@ class DailyForecastFeedViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func fetchDailyForecastIfApplicable() {
+        let permissions = userLocationService.getCurrentLocationPermissions()
+        
+        switch permissions {
+        case .authorizedAlways, .authorizedWhenInUse:
+            fetchDailyForecast()
+        case .denied, .notDetermined, .restricted:
+            break
+        @unknown default:
+            assert(true, "Unknown location authorization status")
+        }
+    }
+    
+    private func fetchDailyForecast() {
+        guard let coordinates = userLocationService.getCurrentLocation()?.coordinate else { return }
+        userLocationService.fetchCurrentCity { cityStateString in
+            self.viewModel.cityAndStateTitle = cityStateString
+        }
+        viewModel.getDailyForecast(with: coordinates)
     }
     
     /// MARK :- action handlers
@@ -102,8 +125,7 @@ extension DailyForecastFeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // TODO: @aldrich populate with location service city name
-        "Toronto, ON"
+        viewModel.cityAndStateTitle
     }
 }
 
@@ -111,9 +133,7 @@ extension DailyForecastFeedViewController: UserLocationServiceListener {
     func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?) {
         switch permission {
         case .authorizedAlways, .authorizedWhenInUse:
-            guard let coordinates = currentLocation?.coordinate else { return }
-            viewModel.getDailyForecast(with: coordinates)
-            break
+            fetchDailyForecast()
         case .denied, .restricted, .notDetermined:
             break
         @unknown default:

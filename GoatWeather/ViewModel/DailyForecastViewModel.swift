@@ -20,6 +20,8 @@ protocol DailyForecastPresenting:AnyObject {
 
 protocol DailyForecastViewModelling: AnyObject {
     var presenter: DailyForecastPresenting? { get set }
+    
+    var cityAndStateTitle: String? { get set }
     var weatherInfo: [WeatherInfoViewModelling]? { get }
     
     func getDailyForecast(with coordinates: CLLocationCoordinate2D)
@@ -29,6 +31,7 @@ class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
     
     weak var presenter: DailyForecastPresenting?
     
+    var cityAndStateTitle: String?
     var weatherInfo: [WeatherInfoViewModelling]?
     
     private let service: WeatherServicing
@@ -36,8 +39,6 @@ class DailyForecastViewModel: NSObject, DailyForecastViewModelling {
     init(service: WeatherServicing) {
         self.service = service
         super.init()
-        
-        getDailyForecast(with: CLLocationCoordinate2D(latitude: 33.44, longitude: -94.04))
     }
     
     func getDailyForecast(with coordinates: CLLocationCoordinate2D) {
