@@ -78,6 +78,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="HighTempLabel" destination="Tes-Q3-3fH" id="eNa-gC-oUs"/>
+                <outlet property="LowTempLabel" destination="I1i-tU-Hsa" id="fgC-Dk-5i3"/>
+                <outlet property="currentTempLabel" destination="jds-Vy-YjS" id="rub-Y0-zNS"/>
+                <outlet property="dayOfWeekLabel" destination="o83-Jx-d4j" id="HWa-3M-yRP"/>
+                <outlet property="leftStackView" destination="frj-3T-hw5" id="ni4-xR-6x9"/>
+                <outlet property="monthDayLabel" destination="Oar-jW-dm1" id="UkP-cd-8BV"/>
+                <outlet property="rightStackView" destination="cvM-ym-BlD" id="et7-Jc-e3Z"/>
+                <outlet property="weatherImageView" destination="xuk-tr-ZDd" id="UaI-fm-2Mw"/>
+            </connections>
             <point key="canvasLocation" x="187.68115942028987" y="84.375"/>
         </tableViewCell>
     </objects>

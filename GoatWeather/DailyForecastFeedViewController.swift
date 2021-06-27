@@ -29,13 +29,19 @@ class DailyForecastFeedViewController: UIViewController {
     }()
     
     private let userLocationService = UserLocationService()
+    private var viewModel = DailyForecastViewModel(service: WeatherService())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userLocationService.listener = self
+        viewModel.presenter = self
+        
         configureNavigation()
         configureSubviews()
         configureConstraints()
+        
+        
     }
 
     /// MARK :- Private UI methods
@@ -74,12 +80,21 @@ class DailyForecastFeedViewController: UIViewController {
 
 extension DailyForecastFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        7 // TODO: @aldrich populate with view model update
+        viewModel.weatherInfo?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherInfoItemCell.identifier) ?? WeatherInfoItemCell()
-        // TODO: @aldrich populate with view model update
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherInfoItemCell.identifier) as? WeatherInfoItemCell ?? WeatherInfoItemCell()
+        
+        if let weatherInfo = viewModel.weatherInfo {
+            let viewModel = weatherInfo[indexPath.row]
+            cell.dayOfWeekLabel.text = viewModel.dayOfWeek
+            cell.monthDayLabel.text = viewModel.date
+            cell.currentTempLabel.text = viewModel.currentTemp
+            cell.highTempLabel.text = viewModel.highTemp
+            cell.lowTempLabel.text = viewModel.lowTemp
+        }
+        
         return cell
     }
     
@@ -90,15 +105,31 @@ extension DailyForecastFeedViewController: UITableViewDataSource {
 }
 
 extension DailyForecastFeedViewController: UserLocationServiceListener {
-    func didChangeLocationPermissions(to permission: CLAuthorizationStatus) {
+    func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?) {
         switch permission {
         case .authorizedAlways, .authorizedWhenInUse:
-            // TODO: @aldrich make a call to fetch daily forecast
+            guard let coordinates = currentLocation?.coordinate else { return }
+            viewModel.getDailyForecast(with: coordinates)
             break
         case .denied, .restricted, .notDetermined:
             break
         @unknown default:
             assert(true, "Unknown location authorization status")
+        }
+    }
+}
+
+extension DailyForecastFeedViewController: DailyForecastPresenting {
+    func feedShouldUpdate(with state: DailyForecastFeedState) {
+        switch state {
+        case .empty:
+            break
+        case .error(_):
+            break
+        case .feed:
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 }

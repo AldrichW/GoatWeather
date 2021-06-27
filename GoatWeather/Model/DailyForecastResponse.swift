@@ -45,7 +45,7 @@ enum DailyForecastError: Error {
         case .invalidURL:
             return "Oops looks like you're trying to access an invalid page"
         case .malformedJSON, .serverError:
-            return "Looks like we're trying to send you the wrong thing. This is our fault, please try again later."
+            return "Looks like we're trying to send you the wrong thing. This is our fault, we're working to fix this."
         }
     }
 }

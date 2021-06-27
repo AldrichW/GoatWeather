@@ -9,7 +9,7 @@ import CoreLocation
 import UIKit
 
 protocol UserLocationServiceListener: AnyObject {
-    func didChangeLocationPermissions(to permission: CLAuthorizationStatus)
+    func didChangeLocationPermissions(to permission: CLAuthorizationStatus, currentLocation: CLLocation?)
 }
 
 protocol UserLocationServicing: AnyObject {
@@ -48,6 +48,6 @@ class UserLocationService: NSObject, UserLocationServicing {
 
 extension UserLocationService: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        listener?.didChangeLocationPermissions(to: manager.authorizationStatus)
+        listener?.didChangeLocationPermissions(to: manager.authorizationStatus, currentLocation: manager.location)
     }
 }
