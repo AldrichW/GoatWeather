@@ -13,19 +13,29 @@ The feed displays the following information:
 ### Functionality
 
 The user can see/do the following:
-  * see a custom splash screen when launching the app
-  * see a right navigation bar item to grant user location permissions
+
+  * see a right navigation bar item to grant user location permissions. This triggers a prompt only when the user has not determined their location authorization
   * see the 7-day forecast for their location
   * pull to refresh the feed
-  * see an error view in case of network errors
-  * see an empty state view when backend returns an empty list or user hasn't granted permissions
-  * tap "Try again" to reload the feed when they encounter an error
 
 Please see the corresponsing screenshots and demos in the `/demo_screenshots` folder from the root directory
+
+## If I had more time
+
+If I could allocate more time to this project, I would work on the following tasks:
+* Unit testing across view controller, view model, and service layer
+* Establish a stronger stream-based approach for view model updates using RXswift vs presenter and listener approach
+* Better view model caching implementation when the network is unavailable
+* API key obfuscation through generated code 
+* A dedicated cusom bottom sheet to display weather detail page (description, humidity, feels like, etc.)
+* Having an empty state and error views based on the backend response
+* Better state management for URL query parameters such as imperial vs metric system and excluded info
+* Better image placeholders while the image is getting fetched
 
 
 ## Running the app
 GOAT Weather app was developed using the following configuration:
+  * API Key - please use the API key I include in my follow-up email and replace the value of `openWeatherAPIKey` in `APISecrets.swift`
   * Xcode 12
   * iOS14 runtime, min iOS10 required
   * Swift 5
@@ -35,24 +45,21 @@ GOAT Weather app was developed using the following configuration:
 1. From the root of the app directory, open `GoatWeather.xcworkspace` using Xcode
 2. Build and Run the app using `Cmd + R`
 
-## Testing the app
-1. With the project opened on Xcode, Tap on Product tab > Test or use `Cmd + U`
-
 ## Third Party Libraries
 
 The following third party libraries and frameworks were used to help develop GOAT Weather:
   * SnapKit - Snapkit offers an easy to use API for setting autolayout constraints for views. I find the default API apple provides confusing and hard to read
   * Cocoapods - I needed to use cocoapods in order to easily integrate Snapkit into my project
-  * URLProtocolMock - I got inspiration from an exteral blog to mock the URLProtocol in order to accurately test the network layer. I'm not too familiar with unit testing network layer code, so I did a bit of research for this part.
 
 ## Architecture
 
+** Please see `GoatWeatherArchitectureDiagram.jpeg` in the root directory for the full architecture diagram **
+
 When designing the architecture for this app, I focused on the following guiding principles:
 
-  * Clear data flow - making sure that data flows in the direction of service layer -> model -> view model -> view, while invocations and interactions are clearly communicated from the view controller to the service layer.
-  * Flexible and extendable components - Since we'll be building on it in future interviews, I wanted to ensure that features can be easily added
+  * Clear data flow - making sure that data flows in the direction of service layer -> model -> view model -> view, while invocations and user interactions are clearly communicated from the view controller to the service layer.
+  * Flexible and extendable components - Since we'll be discussing and building on it in future interviews, I wanted to ensure that features can be easily added
   * Easy to test - Decoupling components to make business logic easy to test by injecting mocks
-  * UX flows coverage - I focused on the user not getting stuck in any flow (cold start, returning user, error case, empty case), so I made sure the app always had a call to action and we don't introduce complicated stateful experiences since they tend to be fragile 
 
 ### Design Pattern - MVVM vs VIPER/RIBs
 
@@ -86,7 +93,7 @@ Alternatives considered - VIPER/RIBs, MVC
 
 ### Storyboard vs Programmatic UI
 
-I decided to remove the storyboard and implement my views programmatically  with the exception of the custom cell class `StockTickerItemCell` which is a Xib. I decided keep the cell a xib since it was quick to prototype, easy to visualize, and easy talk through with interviewers or other collaborators.
+I decided to remove the storyboard and implement my views programmatically with the exception of the custom cell class `WeatherInfoItemCell` which is a Xib. I decided keep the cell a xib since it was quick to prototype, easy to visualize, and easy talk through with interviewers or other collaborators.
 
 **Storyboard/Nib pros:**
 * Easy to visualize
@@ -112,5 +119,5 @@ I decided to remove the storyboard and implement my views programmatically  with
 
 ### Service Layer Router and Model nullability
 
-I wanted to be mindful of adding new endpoints or modifying existing endpoints from backend so I implemented the `CashStockServiceRouter` to easily generate new URLs based on different path components. I also made all my `codable` models nullable to keep clients compatible with backend changes and to not break runtime if backend ever decideds to pass `nil` back to the client.
+I wanted to be mindful of adding new endpoints or modifying existing endpoints from backend. OpenWeather API allows for numerous optional parameters, so I implemented the `WeatherServiceRouter` to easily generate new URLs based on different path components and parameter config. I also made all my `codable` models nullable to keep clients compatible with backend changes and to not break runtime if backend ever decideds to pass `nil` back to the client.
 
