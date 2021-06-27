@@ -43,7 +43,8 @@ GOAT Weather app was developed using the following configuration:
 
 **To run the app on a local simulator:**
 1. From the root of the app directory, open `GoatWeather.xcworkspace` using Xcode
-2. Build and Run the app using `Cmd + R`
+2. Edit the app run scheme and ensure you have “Allow Location Simulation” toggled on and set a default location
+3. Build and Run the app using `Cmd + R`
 
 ## Third Party Libraries
 
